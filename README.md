@@ -4,7 +4,10 @@ An Eleventy plugin that brings the full capabilities of Sharp to your static sit
 
 This plugin is a continuation of the now-abandoned [eleventy-plugin-sharp](https://github.com/luwes/eleventy-plugin-sharp) by [luwes](https://github.com/luwes/).
 
-A tutorial video covering all of the information in this README can be found [on YouTube](https://www.youtube.com/watch?v=scYFC1LRfPg)
+
+> [!TIP]
+> A tutorial video covering all of the information in this README can be found [on YouTube](https://www.youtube.com/watch?v=scYFC1LRfPg)
+
 
 ## Table of Contents
 
@@ -38,9 +41,14 @@ npm install @codestitchofficial/eleventy-plugin-sharp-images
 2. Configure Eleventy:
 
 ```javascript
+// eleventy.js
+
 const eleventyPluginSharpImages = require("@codestitchofficial/eleventy-plugin-sharp-images");
 
 module.exports = function (eleventyConfig) {
+
+    // other plugins
+
     eleventyConfig.addPlugin(eleventyPluginSharpImages, {
         urlPath: "/assets/images",
         outputDir: "public/assets/images",
@@ -48,7 +56,12 @@ module.exports = function (eleventyConfig) {
 };
 ```
 
-**Important**: This plugin relies on specific HTML comments to process images. If these comments are removed or altered by minification before this plugin runs, it will cause errors. To prevent this, make sure to add any HTML minification plugins _after_ this plugin in your Eleventy configuration file. This ensures that image processing occurs before any minification takes place.
+> [!IMPORTANT]
+> This plugin relies on specific HTML comments to process images. If these comments are removed or altered by minification before this plugin runs, it will cause errors. To prevent this, make sure to add any HTML minification plugins _after_ this plugin in your Eleventy configuration file. This ensures that image processing occurs before any minification takes place.
+
+
+> [!CAUTION]
+> `eleventy.js` only accepts one `module.exports`. Make sure you paste the plugin snippet above **inside** the current `module.exports`.
 
 3. For caching (Netlify use only), install Netlify's caching plugin:
 
