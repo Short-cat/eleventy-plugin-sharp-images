@@ -52,6 +52,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyPluginSharpImages, {
         urlPath: "/assets/images",
         outputDir: "public/assets/images",
+        autoRotate: true, // Automatically fix EXIF orientation issues
     });
 };
 ```
@@ -86,10 +87,12 @@ package = "netlify-plugin-cache"
 
 ## Configuration
 
-Only two options are needed to configure the plugin:
+The plugin accepts the following configuration options:
 
 -   `urlPath`: The prefix for generated image URLs in your built site
 -   `outputDir`: The directory where processed images should be saved
+-   `cacheStrategy`: Cache strategy to use ("auto", "content", or "stats"). Defaults to "auto"
+-   `autoRotate`: Some images have a mis-match between their EXIF orientation and how the image is rendered. When this config option is enabled (Defaults to `true`), automatically apply EXIF orientation correction only when needed (i.e. when orientation ≠ 1)
 
 <a href="#usage"></a>
 
